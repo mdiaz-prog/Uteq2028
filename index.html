@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Educación ambiental: hábitos que cuidan el planeta</title>
+<meta name="description" content="Descubre prácticas ambientales sencillas para mejorar tus hábitos en casa, en la escuela y en el trabajo.">
+<meta name="theme-color" content="#fefffc">
+
+<style>
+/* ==========================================================================
+   EDITAR AQUÍ (sin riesgo): colores, tamaños y espacios de la página.
+   Cambia solo el valor que está después de los dos puntos, por ejemplo
+   --color-parchment: #fefffc;  →  --color-parchment: #fffdf5;
+   ========================================================================== */
+:root {
+  /* Colores (tomados de tu design.md) */
+  --color-parchment: #fefffc;   /* fondo de la página */
+  --color-paper: #ffffff;       /* tarjetas */
+  --color-linen: #f9faf7;       /* fondos suaves */
+  --color-ink-black: #171717;
+  --color-graphite: #2c2c2c;    /* títulos */
+  --color-charcoal: #444141;    /* texto del cuerpo */
+  --color-ash: #646464;         /* texto secundario */
+  --color-mist: #dee2de;        /* bordes finos */
+  --color-twilight: #282834;    /* bordes y texto de botones */
+  --color-dusk: #1f1f29;
+  --color-signal-blue: #41a1cf; /* solo borde del botón principal */
+  --color-cerulean: #0081c0;    /* solo la franja azul destacada */
+
+  /* Tipografías: fuentes que ya trae cada dispositivo (no se descarga nada) */
+  --font-titulos: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --font-cuerpo: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Espacios (base de 4 px) */
+  --espacio-8: 8px;
+  --espacio-12: 12px;
+  --espacio-16: 16px;
+  --espacio-24: 24px;
+  --espacio-32: 32px;
+  --espacio-48: 48px;
+  --espacio-64: 64px;
+  --espacio-96: 96px;
+
+  /* Formas */
+  --radio-boton: 8px;
+  --radio-tarjeta: 16px;
+  --radio-grande: 24px;
+  --ancho-maximo: 1200px;
+}
+
+/* ==========================================================================
+   NO TOCAR DESDE AQUÍ: estructura y aspecto interno de la página.
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-parchment);
+  color: var(--color-charcoal);
+  font-family: var(--font-cuerpo);
+  font-size: 1rem;           /* 16 px */
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-titulos);
+  font-weight: 400;
+  color: var(--color-graphite);
+  font-feature-settings: "liga" 0;
+  margin: 0;
+}
+h1 { font-size: clamp(2.125rem, 8vw, 3.375rem); line-height: 1.1; letter-spacing: -0.02em; }
+h2 { font-size: clamp(2rem, 6vw, 2.5rem); line-height: 1.1; letter-spacing: -0.02em; }
+h3 { font-size: 1.6875rem; line-height: 1.3; letter-spacing: -0.03em; }
+p { margin: 0; }
+
+a { color: var(--color-twilight); }
+
+:focus-visible {
+  outline: 3px solid var(--color-twilight);
+  outline-offset: 3px;
+}
+
+.saltar {
+  position: absolute;
+  left: 16px;
+  top: -80px;
+  background: var(--color-paper);
+  border: 1px solid var(--color-twilight);
+  border-radius: var(--radio-boton);
+  padding: 12px 16px;
+  z-index: 100;
+}
+.saltar:focus { top: 16px; }
+
+/* ---------- Botones ---------- */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 8px 16px;
+  border: 1px solid var(--color-twilight);
+  border-radius: var(--radio-boton);
+  background: transparent;
+  color: var(--color-twilight);
+  font-family: var(--font-cuerpo);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  cursor: pointer;
+}
+.boton:hover { background: var(--color-linen); }
+.boton-principal { border-color: var(--color-signal-blue); }
+.flecha {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+.flecha svg { width: 12px; height: 12px; }
+
+/* ---------- Menú flotante en píldora ---------- */
+.barra {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 50;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 4px 8px 4px 16px;
+  background: rgba(255, 255, 255, 0.9);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--color-twilight);
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0 2px 6px 0;
+}
+.barra-fila { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; }
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-weight: 500;
+  color: var(--color-twilight);
+  text-decoration: none;
+}
+.marca svg { width: 28px; height: 28px; flex: none; }
+.menu-boton {
+  display: none;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 16px;
+  background: transparent;
+  border: 1px solid var(--color-twilight);
+  border-radius: var(--radio-boton);
+  color: var(--color-twilight);
+  font: 500 1rem var(--font-cuerpo);
+  cursor: pointer;
+}
+.js .menu-boton { display: inline-flex; align-items: center; }
+.menu-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 4px 0 12px;
+}
+.js .menu-lista { display: none; }
+.js .menu-lista.abierto { display: flex; }
+.menu-lista a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: var(--radio-boton);
+  font-weight: 500;
+  text-decoration: none;
+}
+.menu-lista a:hover { background: var(--color-linen); }
+
+/* ---------- Inicio (pantalla completa con paisaje en SVG) ---------- */
+.inicio {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  padding: 120px 16px 32px;
+}
+.inicio-arte { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+.inicio-tarjeta {
+  width: 100%;
+  max-width: 560px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.84);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--color-mist);
+  border-radius: var(--radio-grande);
+}
+.inicio-tarjeta p { margin: 16px 0 24px; color: var(--color-charcoal); font-size: 1.125rem; }
+
+/* Animaciones del paisaje (solo CSS) */
+.sol { animation: amanecer 2.6s ease-out both; }
+.aspas { transform-box: fill-box; transform-origin: center; animation: girar 14s linear infinite; }
+.hoja { transform-box: fill-box; transform-origin: center; animation: mecer 5s ease-in-out infinite alternate; }
+.hoja.b { animation-duration: 6.5s; animation-delay: -2s; }
+.hoja.c { animation-duration: 7.5s; animation-delay: -4s; }
+@keyframes amanecer { from { transform: translateY(150px); } to { transform: translateY(0); } }
+@keyframes girar { to { transform: rotate(360deg); } }
+@keyframes mecer {
+  from { transform: translate(-10px, -4px) rotate(-14deg); }
+  to   { transform: translate(10px, 8px) rotate(14deg); }
+}
+
+/* ---------- Secciones ---------- */
+.seccion { padding: var(--espacio-64) 20px; }
+.seccion-blanca { background: var(--color-paper); border-top: 1px solid var(--color-mist); border-bottom: 1px solid var(--color-mist); }
+.contenedor { max-width: var(--ancho-maximo); margin: 0 auto; }
+.encabezado { max-width: 720px; margin-bottom: var(--espacio-32); }
+.encabezado p { margin-top: 16px; font-size: 1.125rem; color: var(--color-ash); }
+
+.rejilla { display: grid; gap: 16px; grid-template-columns: 1fr; list-style: none; margin: 0; padding: 0; }
+
+.tarjeta {
+  background: var(--color-paper);
+  border: 1px solid var(--color-mist);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0 1px 1px 0, rgba(0, 0, 0, 0.08) 0 4px 5px 0;
+}
+.tarjeta p { margin-top: 8px; }
+.icono {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 16px;
+  background: var(--color-linen);
+  border: 1px solid var(--color-mist);
+  border-radius: 50%;
+}
+.icono svg { width: 36px; height: 36px; }
+
+/* Franja azul destacada (único momento de color intenso) */
+.franja {
+  position: relative;
+  overflow: hidden;
+  margin-top: var(--espacio-48);
+  padding: 40px 24px;
+  background: var(--color-cerulean);
+  color: #ffffff;
+  border-radius: var(--radio-grande);
+}
+.franja p {
+  position: relative;
+  max-width: 760px;
+  font-family: var(--font-titulos);
+  font-size: clamp(1.6875rem, 5vw, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.franja svg { position: absolute; left: 0; bottom: 0; width: 100%; height: 90px; }
+
+/* Cómo funciona */
+.pasos { counter-reset: paso; }
+.paso h3::before {
+  counter-increment: paso;
+  content: counter(paso);
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+  border: 1px solid var(--color-twilight);
+  border-radius: 50%;
+  font-size: 1.125rem;
+  letter-spacing: 0;
+  vertical-align: middle;
+}
+
+/* Quién soy */
+.perfil { display: grid; gap: 32px; align-items: center; }
+.perfil-dibujo {
+  width: 200px;
+  height: 200px;
+  background: var(--color-linen);
+  border: 1px solid var(--color-mist);
+  border-radius: var(--radio-grande);
+  display: grid;
+  place-items: center;
+}
+.perfil-dibujo svg { width: 120px; height: 120px; }
+.perfil-texto p { margin-top: 16px; max-width: 640px; font-size: 1.125rem; }
+.ph { background: var(--color-linen); border-bottom: 1px dotted var(--color-ash); }
+
+/* Preguntas frecuentes */
+.preguntas { display: grid; gap: 12px; max-width: 800px; }
+details {
+  background: var(--color-paper);
+  border: 1px solid var(--color-mist);
+  border-radius: 12px;
+}
+summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 56px;
+  padding: 8px 16px;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--color-graphite);
+  cursor: pointer;
+  list-style: none;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; flex: none; font-size: 1.5rem; line-height: 1; }
+details[open] summary::after { content: "−"; }
+details p { padding: 0 16px 16px; }
+
+/* Contacto */
+.contacto { display: grid; gap: 32px; }
+.contacto-datos { margin: 0; display: grid; gap: 16px; }
+.contacto-datos div { padding-bottom: 16px; border-bottom: 1px solid var(--color-mist); }
+.contacto-datos dt { font-weight: 500; color: var(--color-graphite); }
+.contacto-datos dd { margin: 4px 0 12px; }
+.contacto-tarjeta { padding: 24px; }
+
+/* Pie de página */
+.pie { padding: var(--espacio-64) 20px; background: var(--color-paper); border-top: 1px solid var(--color-mist); }
+.pie-frase {
+  max-width: 860px;
+  font-family: var(--font-titulos);
+  font-size: clamp(1.6875rem, 4vw, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-graphite);
+}
+.pie-enlaces { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 32px 0 0; padding: 0; list-style: none; }
+.pie-enlaces a { display: inline-flex; align-items: center; min-height: 44px; }
+.pie small { display: block; margin-top: 16px; font-size: 1rem; color: var(--color-ash); }
+
+/* ---------- Pantallas medianas y grandes ---------- */
+@media (min-width: 700px) {
+  .rejilla.dos { grid-template-columns: repeat(2, 1fr); }
+  .rejilla.tres { grid-template-columns: repeat(3, 1fr); }
+  .perfil { grid-template-columns: 200px 1fr; gap: 48px; }
+  .contacto { grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .inicio { padding: 120px 32px 48px; }
+  .inicio-tarjeta { padding: 32px; }
+}
+@media (min-width: 900px) {
+  .seccion { padding: var(--espacio-96) 32px; }
+  .barra { padding: 4px 12px 4px 20px; }
+  .barra-fila { min-height: 56px; }
+  .menu-lista, .js .menu-lista { display: flex; flex-direction: row; gap: 4px; padding: 0; }
+  .menu-boton, .js .menu-boton { display: none; }
+  .barra { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .barra-fila { flex: none; }
+  .rejilla.cuatro { grid-template-columns: repeat(4, 1fr); }
+  .franja { padding: 80px; }
+  .pie { padding: var(--espacio-96) 32px; }
+}
+
+/* Respeto a quien prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .sol, .aspas, .hoja { animation: none; }
+}
+</style>
+</head>
+
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<!-- ==========================================================================
+     MENÚ. EDITAR AQUÍ: solo el texto de los enlaces. NO TOCAR: las etiquetas
+     ni los href="#...", porque llevan a cada sección.
+     ========================================================================== -->
+<header class="barra">
+  <nav aria-label="Principal" id="nav">
+    <div class="barra-fila">
+      <a class="marca" href="#inicio">
+        <svg viewBox="0 0 32 32" fill="none" stroke="#282834" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <circle cx="16" cy="13" r="5"/>
+          <path d="M16 3v2M6 13H4M28 13h-2M8.5 5.5l1.4 1.4M23.5 5.5l-1.4 1.4"/>
+          <path d="M3 26c4-5 8-5 13-2s9 2 13-2"/>
+        </svg>
+        <span>Educación ambiental</span>
+      </a>
+      <button class="menu-boton" type="button" aria-expanded="false" aria-controls="menu-lista">Menú</button>
+    </div>
+    <ul class="menu-lista" id="menu-lista">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#que-ofrezco">Qué ofrezco</a></li>
+      <li><a href="#como-funciona">Cómo funciona</a></li>
+      <li><a href="#quien-soy">Quién soy</a></li>
+      <li><a href="#preguntas">Preguntas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="contenido">
+
+  <!-- ======================= 1. INICIO =======================
+       EDITAR AQUÍ: el titular (h1), el párrafo y el texto del botón.
+       NO TOCAR: el dibujo SVG del paisaje (hasta el cierre del svg). -->
+  <section class="inicio" id="inicio" aria-labelledby="titulo-inicio">
+    <svg class="inicio-arte" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#8fc7e4"/>
+          <stop offset="0.55" stop-color="#d7ecea"/>
+          <stop offset="1" stop-color="#fbf3cf"/>
+        </linearGradient>
+        <radialGradient id="brillo">
+          <stop offset="0" stop-color="#ffe9a0" stop-opacity="0.9"/>
+          <stop offset="1" stop-color="#ffe9a0" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect width="1440" height="900" fill="url(#cielo)"/>
+      <g class="sol">
+        <circle cx="820" cy="470" r="190" fill="url(#brillo)"/>
+        <circle cx="820" cy="470" r="78" fill="#ffd45e"/>
+      </g>
+      <g fill="#ffffff" opacity="0.85">
+        <ellipse cx="260" cy="190" rx="90" ry="22"/><ellipse cx="320" cy="170" rx="60" ry="22"/>
+        <ellipse cx="1120" cy="260" rx="100" ry="24"/><ellipse cx="1190" cy="238" rx="64" ry="22"/>
+        <ellipse cx="640" cy="130" rx="70" ry="16"/>
+      </g>
+      <!-- colinas lejanas -->
+      <path d="M0 640 C180 560 330 600 520 560 C720 520 860 600 1060 570 C1230 545 1340 590 1440 560 L1440 900 L0 900Z" fill="#a9d6b8"/>
+      <!-- aerogeneradores (energía limpia) -->
+      <g stroke="#ffffff" stroke-width="4" stroke-linecap="round">
+        <line x1="330" y1="610" x2="330" y2="520"/>
+        <line x1="470" y1="600" x2="470" y2="545"/>
+      </g>
+      <g class="aspas" stroke="#ffffff" stroke-width="4" stroke-linecap="round">
+        <circle cx="330" cy="520" r="52" fill="none" stroke="none"/>
+        <line x1="330" y1="520" x2="330" y2="472"/>
+        <line x1="330" y1="520" x2="371" y2="544"/>
+        <line x1="330" y1="520" x2="289" y2="544"/>
+      </g>
+      <g class="aspas" stroke="#ffffff" stroke-width="3" stroke-linecap="round">
+        <circle cx="470" cy="545" r="34" fill="none" stroke="none"/>
+        <line x1="470" y1="545" x2="470" y2="514"/>
+        <line x1="470" y1="545" x2="497" y2="561"/>
+        <line x1="470" y1="545" x2="443" y2="561"/>
+      </g>
+      <!-- colinas medias y árboles -->
+      <path d="M0 700 C200 630 380 690 600 650 C820 610 980 700 1200 660 C1320 640 1400 660 1440 650 L1440 900 L0 900Z" fill="#7cc29b"/>
+      <g fill="#5b4a3a">
+        <rect x="157" y="690" width="6" height="26"/><rect x="227" y="672" width="6" height="26"/>
+        <rect x="557" y="662" width="6" height="26"/><rect x="1247" y="662" width="6" height="26"/>
+        <rect x="1327" y="652" width="6" height="26"/>
+      </g>
+      <g fill="#2f8a62">
+        <circle cx="160" cy="684" r="24"/><circle cx="230" cy="666" r="22"/>
+        <circle cx="560" cy="656" r="24"/><circle cx="1250" cy="656" r="26"/><circle cx="1330" cy="646" r="22"/>
+      </g>
+      <!-- río -->
+      <path d="M690 668 C720 700 650 740 700 790 C735 825 690 870 700 900 L880 900 C850 860 890 820 840 780 C790 740 850 700 790 668Z" fill="#5bb0da"/>
+      <!-- pradera -->
+      <path d="M0 800 C240 760 420 820 700 790 C980 760 1200 820 1440 780 L1440 900 L0 900Z" fill="#3f9f74"/>
+      <path d="M0 860 C300 830 520 880 800 850 C1080 820 1260 870 1440 840 L1440 900 L0 900Z" fill="#2a7f5f"/>
+      <g>
+        <circle cx="120" cy="840" r="6" fill="#ffcf4a"/><circle cx="210" cy="868" r="5" fill="#b987d9"/>
+        <circle cx="330" cy="830" r="6" fill="#ffcf4a"/><circle cx="450" cy="872" r="5" fill="#ffffff"/>
+        <circle cx="560" cy="846" r="6" fill="#b987d9"/><circle cx="640" cy="880" r="5" fill="#ffcf4a"/>
+        <circle cx="930" cy="858" r="6" fill="#ffcf4a"/><circle cx="1010" cy="880" r="5" fill="#b987d9"/>
+        <circle cx="1120" cy="836" r="6" fill="#ffffff"/><circle cx="1230" cy="866" r="6" fill="#ffcf4a"/>
+        <circle cx="1330" cy="842" r="5" fill="#b987d9"/><circle cx="1400" cy="880" r="6" fill="#ffcf4a"/>
+      </g>
+      <!-- hojas que se mecen -->
+      <g transform="translate(560 300)"><path class="hoja" d="M0 0 C12 -14 28 -10 30 4 C16 14 4 12 0 0Z" fill="#5fae6a"/></g>
+      <g transform="translate(980 360)"><path class="hoja b" d="M0 0 C12 -14 28 -10 30 4 C16 14 4 12 0 0Z" fill="#7cc29b"/></g>
+      <g transform="translate(1180 250)"><path class="hoja c" d="M0 0 C12 -14 28 -10 30 4 C16 14 4 12 0 0Z" fill="#5fae6a"/></g>
+      <g transform="translate(300 380)"><path class="hoja b" d="M0 0 C12 -14 28 -10 30 4 C16 14 4 12 0 0Z" fill="#7cc29b"/></g>
+      <g transform="translate(760 210)"><path class="hoja" d="M0 0 C12 -14 28 -10 30 4 C16 14 4 12 0 0Z" fill="#5fae6a"/></g>
+    </svg>
+
+    <div class="inicio-tarjeta">
+      <!-- EDITAR AQUÍ -->
+      <h1 id="titulo-inicio">Mira cómo los hábitos pequeños cuidan el planeta</h1>
+      <p>Descubre prácticas ambientales sencillas que puedes empezar hoy en casa, en la escuela o en el trabajo.</p>
+      <a class="boton boton-principal" href="#que-ofrezco">
+        Descubre las prácticas
+        <span class="flecha" aria-hidden="true">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h8M6.5 2.5L10 6l-3.5 3.5"/></svg>
+        </span>
+      </a>
+      <!-- NO TOCAR DESDE AQUÍ -->
+    </div>
+  </section>
+
+  <!-- ======================= 2. QUÉ OFREZCO =======================
+       EDITAR AQUÍ: títulos (h2, h3) y textos (p) de cada práctica.
+       NO TOCAR: las etiquetas <svg> de los iconos ni los class="...". -->
+  <section class="seccion seccion-blanca" id="que-ofrezco" aria-labelledby="titulo-ofrezco">
+    <div class="contenedor">
+      <div class="encabezado">
+        <h2 id="titulo-ofrezco">Cuatro prácticas para empezar hoy</h2>
+        <p>Cada práctica se puede observar, probar y repetir. Elige la que te resulte más fácil.</p>
+      </div>
+
+      <ul class="rejilla dos cuatro">
+        <li class="tarjeta">
+          <div class="icono">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#282834" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M10 14h28M19 14v-4h10v4M14 14l2 28h16l2-28"/>
+              <path d="M24 36c-5-1-7-5-6-9 4 0 7 2 6 9z"/>
+            </svg>
+          </div>
+          <h3>Clasificar residuos</h3>
+          <p>Separa orgánicos, plásticos, papel y vidrio en recipientes distintos.</p>
+        </li>
+        <li class="tarjeta">
+          <div class="icono">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#282834" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M24 6C24 6 12 20 12 29a12 12 0 0 0 24 0C36 20 24 6 24 6z"/>
+              <path d="M18 30a6 6 0 0 0 5 6"/>
+            </svg>
+          </div>
+          <h3>Ahorrar agua</h3>
+          <p>Cierra el grifo mientras te cepillas los dientes y repara las fugas.</p>
+        </li>
+        <li class="tarjeta">
+          <div class="icono">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#282834" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M24 6a12 12 0 0 0-6 22v6h12v-6a12 12 0 0 0-6-22z"/>
+              <path d="M19 39h10M21 43h6"/>
+            </svg>
+          </div>
+          <h3>Ahorrar energía</h3>
+          <p>Apaga las luces que no usas y desconecta los aparatos cuando termines.</p>
+        </li>
+        <li class="tarjeta">
+          <div class="icono">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#282834" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="32" r="8"/><circle cx="36" cy="32" r="8"/>
+              <path d="M12 32l8-14h10M20 18l7 14h9l-6-14M28 14h5"/>
+            </svg>
+          </div>
+          <h3>Moverte mejor</h3>
+          <p>Camina, usa la bicicleta o comparte el viaje cuando la distancia lo permita.</p>
+        </li>
+      </ul>
+
+      <!-- EDITAR AQUÍ: la frase de la franja azul -->
+      <div class="franja">
+        <p>Un hábito pequeño, repetido cada día, cambia el lugar donde vives.</p>
+        <!-- NO TOCAR: dibujo de olas -->
+        <svg viewBox="0 0 1200 90" preserveAspectRatio="none" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="2" aria-hidden="true" focusable="false">
+          <path d="M0 50 C150 20 300 80 450 50 S750 20 900 50 S1100 80 1200 50"/>
+          <path d="M0 70 C150 40 300 100 450 70 S750 40 900 70 S1100 100 1200 70"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= 3. CÓMO FUNCIONA =======================
+       EDITAR AQUÍ: los títulos (h3) y los textos (p) de los tres pasos.
+       NO TOCAR: los class="..." (la numeración es automática). -->
+  <section class="seccion" id="como-funciona" aria-labelledby="titulo-funciona">
+    <div class="contenedor">
+      <div class="encabezado">
+        <h2 id="titulo-funciona">Así se aprende un hábito</h2>
+        <p>Tres pasos, en este orden.</p>
+      </div>
+      <ol class="rejilla tres pasos">
+        <li class="tarjeta paso">
+          <h3>Observa</h3>
+          <p>Mira cómo se hace cada práctica: qué se necesita y qué resultado produce.</p>
+        </li>
+        <li class="tarjeta paso">
+          <h3>Practica</h3>
+          <p>Elige una práctica y repítela en tu rutina hasta que se vuelva costumbre.</p>
+        </li>
+        <li class="tarjeta paso">
+          <h3>Comparte</h3>
+          <p>Cuéntaselo a tu familia, tus compañeros o tus vecinos para que se sumen.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ======================= 4. QUIÉN SOY =======================
+       EDITAR AQUÍ: reemplaza cada [PLACEHOLDER ...] por tu información real.
+       NO TOCAR: el dibujo SVG ni los class="...". -->
+  <section class="seccion seccion-blanca" id="quien-soy" aria-labelledby="titulo-quien">
+    <div class="contenedor perfil">
+      <div class="perfil-dibujo" aria-hidden="true">
+        <svg viewBox="0 0 120 120" fill="none" stroke="#282834" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+          <path d="M60 104V54"/>
+          <path d="M60 70C38 70 26 56 26 34c22 0 34 12 34 36z"/>
+          <path d="M60 58C60 38 72 26 94 26c0 22-12 34-34 32z"/>
+          <path d="M34 104h52"/>
+        </svg>
+      </div>
+      <div class="perfil-texto">
+        <h2 id="titulo-quien">Quién soy</h2>
+        <p><span class="ph">[PLACEHOLDER: tu nombre]</span></p>
+        <p><span class="ph">[PLACEHOLDER: describe en dos o tres frases quién eres, tu formación y por qué impulsas la educación ambiental]</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= 5. PREGUNTAS FRECUENTES =======================
+       EDITAR AQUÍ: el texto de cada <summary> (pregunta) y de cada <p> (respuesta).
+       NO TOCAR: las etiquetas <details> y <summary>. -->
+  <section class="seccion" id="preguntas" aria-labelledby="titulo-preguntas">
+    <div class="contenedor">
+      <div class="encabezado">
+        <h2 id="titulo-preguntas">Preguntas frecuentes</h2>
+      </div>
+      <div class="preguntas">
+        <details>
+          <summary>¿Necesito conocimientos previos?</summary>
+          <p>No. Las prácticas son sencillas y se explican con lenguaje claro.</p>
+        </details>
+        <details>
+          <summary>¿Por dónde empiezo?</summary>
+          <p>Elige una sola práctica, la que te resulte más fácil, y empieza hoy.</p>
+        </details>
+        <details>
+          <summary>¿Puedo practicar en casa, en la escuela o en el trabajo?</summary>
+          <p>Sí. Todas las prácticas se pueden adaptar a cada lugar.</p>
+        </details>
+        <details>
+          <summary>¿Cómo puedo participar o pedir más información?</summary>
+          <p>Escríbeme por cualquiera de los medios de la sección Contacto. <span class="ph">[PLACEHOLDER: añade aquí si hay actividades, talleres o fechas]</span></p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= 6. CONTACTO =======================
+       EDITAR AQUÍ: los datos y los enlaces (href). Reemplaza cada [PLACEHOLDER].
+       Ejemplos: href="mailto:tucorreo@ejemplo.com"
+                 href="https://wa.me/CODIGOPAIS-Y-NUMERO"  (código de país y número, sin + ni espacios)
+       NO TOCAR: los class="...". -->
+  <section class="seccion seccion-blanca" id="contacto" aria-labelledby="titulo-contacto">
+    <div class="contenedor contacto">
+      <div class="encabezado">
+        <h2 id="titulo-contacto">Hablemos</h2>
+        <p>Escríbeme para participar, pedir información o proponer una actividad.</p>
+      </div>
+      <div class="tarjeta contacto-tarjeta">
+        <dl class="contacto-datos">
+          <div>
+            <dt>Correo</dt>
+            <dd><span class="ph">[PLACEHOLDER: tu correo]</span></dd>
+            <a class="boton" href="mailto:[PLACEHOLDER]">Escribir por correo</a>
+          </div>
+          <div>
+            <dt>WhatsApp</dt>
+            <dd><span class="ph">[PLACEHOLDER: tu número]</span></dd>
+            <a class="boton" href="https://wa.me/[PLACEHOLDER]">Escribir por WhatsApp</a>
+          </div>
+          <div>
+            <dt>Redes sociales</dt>
+            <dd><span class="ph">[PLACEHOLDER: tu usuario o enlace]</span></dd>
+            <a class="boton" href="#contacto">Ver mis redes</a>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ======================= PIE DE PÁGINA =======================
+     EDITAR AQUÍ: la frase final y el texto de la línea pequeña. -->
+<footer class="pie">
+  <div class="contenedor">
+    <p class="pie-frase">Aprender a cuidar el planeta empieza por mirar lo que hacemos cada día.</p>
+    <ul class="pie-enlaces">
+      <li><a href="#inicio">Volver al inicio</a></li>
+      <li><a href="#que-ofrezco">Qué ofrezco</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <small><span class="ph">[PLACEHOLDER: tu nombre o el del proyecto]</span></small>
+  </div>
+</footer>
+
+<!-- ==========================================================================
+     NO TOCAR DESDE AQUÍ: pequeño script que abre y cierra el menú en el móvil.
+     Si el script falla, la página sigue funcionando: el menú queda visible.
+     ========================================================================== -->
+<script>
+(function () {
+  var raiz = document.documentElement;
+  var boton = document.querySelector('.menu-boton');
+  var lista = document.getElementById('menu-lista');
+  if (!boton || !lista) { return; }
+  raiz.classList.add('js');
+
+  function cambiar(abrir) {
+    lista.classList.toggle('abierto', abrir);
+    boton.setAttribute('aria-expanded', abrir ? 'true' : 'false');
+    boton.textContent = abrir ? 'Cerrar' : 'Menú';
+  }
+
+  boton.addEventListener('click', function () {
+    cambiar(!lista.classList.contains('abierto'));
+  });
+
+  lista.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { cambiar(false); }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { cambiar(false); }
+  });
+})();
+</script>
+</body>
+</html>
